@@ -19,7 +19,7 @@ const initialState: InitialState = {
       genre: 'non-fiction',
       isbn: '9783492972826',
       copies: 5,
-      availability: true
+      available: true
 
     },
     
@@ -27,7 +27,7 @@ const initialState: InitialState = {
   filter: "All",
 }
 
-type DraftBook = Pick<IBook, "title" | "author" | "genre" | "isbn" | "copies" | "availability">; 
+type DraftBook = Pick<IBook, "title" | "author" | "genre" | "isbn" | "copies" | "available">; 
 // type DraftBook = Omit<IBook, "_id">;
 
 const createBook = (bookData: DraftBook): IBook => {

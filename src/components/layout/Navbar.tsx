@@ -13,7 +13,8 @@ export default function Navbar() {
                 </div>
             </div>
             
-            <Link to="/">Books</Link>
+            <Link to="/">Home</Link>
+            <Link to="/books">Books</Link>
             <Link to="/borrow">Borrow</Link>
             <div className="ml-auto">
                 <ModeToggle></ModeToggle>

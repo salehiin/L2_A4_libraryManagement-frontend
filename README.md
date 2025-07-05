@@ -57,6 +57,29 @@ reducer: {
 Or rename your selector to match the actual state key.
 
 
+- redux/api/baseApi.ts
+- redux/store.ts
+- redux/hooks.ts - remain my template
+- pages/Books.tsx
+- components/BookList.tsx
+- components/module/books/AddBookModal.tsx
+- src/redux/api/baseApi.ts
+- src/redux/store.ts
+- components/module/books/AddBookModal.tsx
+- pages/books.tsx
+- components/module/books/BookList.tsx
+- components/module/books/AddBookModal.tsx
+- src/redux/api/baseApi.ts
+- src/redux/store.ts
+- routes/index.tsx
+- components/module/books/AddBookModal.tsx
+- src/pages/books.tsx
+- components/module/books/AddBookModal.tsx
+- types/index.ts 
+- components/module/books/AddBookModal.tsx
+
+
+
 
 
 

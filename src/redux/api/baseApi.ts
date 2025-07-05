@@ -1,24 +1,44 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
+import type { IBook } from "@/types";
 
 export const baseApi = createApi({
-    reducerPath: "baseAPi",
-    baseQuery: fetchBaseQuery({ baseUrl: "https://l2-a3-library-management-k53m.vercel.app/api" }),
-    tagTypes: ["book"],
-    endpoints: (builder) => ({
-        getBooks: builder.query({
-            query: () => "/books",
-            providesTags: ["book"]
-        }),
-        createBook: builder.mutation({
-            query: (bookData) => ({
-                url: "/books",
-                method: "POST",
-                body: bookData,
-            }),
-            invalidatesTags: ["book"]
-        }),
+  reducerPath: "baseApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://l2-a3-library-management-k53m.vercel.app/api",
+  }),
+  tagTypes: ["Book"],
+  endpoints: (builder) => ({
+    getBooks: builder.query<{ data: IBook[] }, void>({
+      query: () => "/books",
+      providesTags: ["Book"],
     }),
+    createBook: builder.mutation<IBook, Partial<IBook>>({
+      query: (newBook) => ({
+        url: "/books",
+        method: "POST",
+        body: newBook,
+      }),
+      invalidatesTags: ["Book"],
+    }),
+    // 
+    deleteBook: builder.mutation<{ success: boolean; message: string }, string>({
+      query: (id) => ({
+        url: `/books/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Book"],
+    }),
+    // 
+    updateBook: builder.mutation<IBook, { id: string; updatedData: Partial<IBook> }>({
+      query: ({ id, updatedData }) => ({
+        url: `/books/${id}`,
+        method: 'PATCH',
+        body: updatedData,
+      }),
+      invalidatesTags: ['Book'],
+    }),
+    // 
+  }),
 });
 
-export const { useGetBooksQuery, useCreateBookMutation } = baseApi;
+export const { useGetBooksQuery, useCreateBookMutation, useUpdateBookMutation, useDeleteBookMutation } = baseApi;
