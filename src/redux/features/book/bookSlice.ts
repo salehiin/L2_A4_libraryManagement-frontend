@@ -3,14 +3,11 @@
 import type { RootState } from '@/redux/store';
 import type { IBook } from '@/types';
 import { createSlice, type PayloadAction, nanoid } from '@reduxjs/toolkit'
-// import { v4 as uuidv4 } from "uuid";
-// import { title } from 'process';
-// import type { RootState } from '../store'
-// Title, Author, Genre, ISBN, Copies, Availability, and Actions
+
 
 interface InitialState {
   books: IBook[];
-  filter: "All" | "FICTION" | "Non-Fiction"
+  filter: "All" | "Fiction" | "Non-Fiction"
 }
 
 const initialState: InitialState = {
@@ -25,21 +22,13 @@ const initialState: InitialState = {
       availability: true
 
     },
-    // {
-    //   _id: 'adfghjk',
-    //   title: 'Deepwork',
-    //   author: 'Cal Neport',
-    //   genre: 'Fiction',
-    //   isbn: '9781455563869',
-    //   copies: 4,
-    //   availability: true
-
-    // },
+    
   ],
-  filter: "all",
+  filter: "All",
 }
 
-type DraftBook = Pick<IBook, "title" | "author" | "genre" | "isbn" | "copies" | "availability">;
+type DraftBook = Pick<IBook, "title" | "author" | "genre" | "isbn" | "copies" | "availability">; 
+// type DraftBook = Omit<IBook, "_id">;
 
 const createBook = (bookData: DraftBook): IBook => {
   return { _id: nanoid(), ...bookData};
@@ -50,49 +39,39 @@ export const bookSlice = createSlice({
   initialState,
   reducers: {
     addBook: (state, action: PayloadAction<DraftBook>) => {
-
-      // const _id = uuidv4();
-
-      // const bookData = {
-      //   ...action.payload,
-      //   _id,
-      //   isAvailable: false
-      // }
-      const bookData = createBook(action.payload)
+      const bookData = createBook(action.payload);
       state.books.push(bookData);
     },
-    // returnBook: (state) => {
-    //   state.book = state.book - 1;
-    // },
+   
     deleteBook: (state, action: PayloadAction<string>) => {
       state.books = state.books.filter((book) => book._id !== action.payload );
     },
-    updateFilter: (state, action: PayloadAction<"all" | "fiction" | "non-fiction">) => {
+    // updateFilter: (state, action: PayloadAction<"all" | "fiction" | "non-fiction">) => {
+    updateFilter: (state, action: PayloadAction<"All" | "Fiction" | "Non-Fiction">) => {
       state.filter = action.payload;
     }
   },
 
 })
 
-// export const { borrowBook, returnBook } = bookSlice.actions;
-
+// selectors
 export const selectBooks = (state: RootState) => {
 
-  const filter = state.bookManage.filter;
+  const filter = state.book.filter;
 
-  if(filter === "fiction"){
-    return state.bookManage.books.filter(book => book.genre === "fiction");
-  }else if(filter === "non-fiction"){
-    return state.bookManage.books.filter(book => book.genre === "non-fiction");
+  if(filter === "Fiction"){
+    return state.book.books.filter(book => book.genre.toLowerCase() === "fiction");
+  }else if(filter === "Non-Fiction"){
+    return state.book.books.filter(book => book.genre.toLowerCase() === "non-fiction");
   }else{
-    return state.bookManage.books;
+    return state.book.books;
   }
 
-  return state.bookManage.books;
+  // return state.bookManage.books;
 }
 
 export const selectFilter = (state: RootState) => {
-  return state.bookManage.filter;
+  return state.book.filter;
 }
 
 export const { addBook, deleteBook, updateFilter } = bookSlice.actions;

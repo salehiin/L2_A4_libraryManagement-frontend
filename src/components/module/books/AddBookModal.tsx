@@ -13,12 +13,9 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useCreateBookMutation } from "@/redux/api/baseApi";
-import { addBook } from "@/redux/features/book/bookSlice";
-import { useAppDispatch } from "@/redux/hooks";
-import type { IBook } from "@/types";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form"
-// import { Link } from "react-router";
+
 
 
 export function AddBookModal() {
@@ -26,15 +23,15 @@ export function AddBookModal() {
     const [open, setOpen] = useState(false);
     const form = useForm();
 
-    const [createBook, { data, isLoading, isError, isSuccess }] = useCreateBookMutation();
+    const [createBook, { data }] = useCreateBookMutation();
 
-    // const dispatch = useAppDispatch();------
+   
 
     console.log("Data", data);
 
     const onSubmit: SubmitHandler<FieldValues> = async(data) => {
 
-        // dispatch(addBook(data as IBook));------
+      
         const bookData = {
             ...data,
         };
@@ -62,20 +59,6 @@ export function AddBookModal() {
                 </DialogHeader>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)}>
-                        {/* <FormField
-                            control={form.control}
-                            name="_id"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Id</FormLabel>
-                                    <FormControl>
-                                        <Input {...field} value={field.value || ""} />
-                                    </FormControl>
-                                    <FormDescription />
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        /> */}
                         <FormField
                             control={form.control}
                             name="title"
@@ -132,18 +115,15 @@ export function AddBookModal() {
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent className="">
-                                            <SelectItem value="fiction">FICTION</SelectItem>
-                                            <SelectItem value="non-fiction">NON_FICTION</SelectItem>
-                                            <SelectItem value="science">SCIENCE</SelectItem>
-                                            <SelectItem value="history">HISTORY</SelectItem>
-                                            <SelectItem value="biography">BIOGRAPHY</SelectItem>
-                                            <SelectItem value="fantasy">FANTASY</SelectItem>
+                                            <SelectItem value="Fiction">FICTION</SelectItem>
+                                            <SelectItem value="Non-Fiction">NON_FICTION</SelectItem>
+                                            <SelectItem value="Science">SCIENCE</SelectItem>
+                                            <SelectItem value="History">HISTORY</SelectItem>
+                                            <SelectItem value="Biography">BIOGRAPHY</SelectItem>
+                                            <SelectItem value="Fantasy">FANTASY</SelectItem>
                                         </SelectContent>
                                     </Select>
-                                    {/* <FormDescription className="sr-only">
-                                        You can manage email addresses in your{" "}
-                                        <Link href="/examples/forms">email settings</Link>.
-                                    </FormDescription> */}
+                                    
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -213,21 +193,6 @@ export function AddBookModal() {
                                 </FormItem>
                             )}
                         />
-                        {/* Availability */}
-                        {/* <FormField
-                            control={form.control}
-                            name="title"
-                            render={({field}) => (
-                                <FormItem>
-                                    <FormLabel />
-                                    <FormControl>
-                                        <Input {...field} value={field.value || ""} />
-                                    </FormControl>
-                                    <FormDescription />
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        /> */}
 
                         <DialogFooter>
                             <DialogClose asChild>

@@ -12,7 +12,7 @@ export default function Navbar() {
                         src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
                 </div>
             </div>
-            {/* <Link to="/books">Books</Link> */}
+            
             <Link to="/">Books</Link>
             <Link to="/borrow">Borrow</Link>
             <div className="ml-auto">

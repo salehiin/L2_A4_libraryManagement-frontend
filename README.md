@@ -39,17 +39,22 @@
 # vercel - https://docs.google.com/document/d/13WSmmTHvOLYWPVXJlmFGalnCXcF60D6omjk-a1xTW-c/edit?tab=t.0
 
 
-{
-      id: 'adfghjk',
-      title: 'Deepwork',
-      author: 'Cal Neport',
-      genre: 'Non-fiction',
-      ISBN: '9781455563869',
-      copies: '4',
-      availability: 'true'
 
-    }
+🛠 4. bookManage slice does not exist on state
+You're referencing state.bookManage in selectors, but your store doesn't include that slice name. Ensure:
 
+Your slice is named bookManage,
+
+It's added to the store:
+
+ts
+Copy
+Edit
+reducer: {
+  bookManage: bookManageReducer,
+  baseApi: baseApi.reducer,
+}
+Or rename your selector to match the actual state key.
 
 
 
