@@ -9,7 +9,6 @@ import type { IBook } from "@/types";
 import { useUpdateBookMutation } from "@/redux/api/baseApi";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useForm } from "react-hook-form";
-// import { Form } from "@/components/ui/form"
 import { Input } from "@/components/ui/input";
 import { Edit } from "lucide-react";
 
@@ -73,7 +72,7 @@ export default function UpdateBookModal({ book }: UpdateBookModalProps) {
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            {/* Similar FormFields as AddBookModal */}
+            
             <FormField
               control={form.control}
               name="title"
@@ -183,7 +182,7 @@ export default function UpdateBookModal({ book }: UpdateBookModalProps) {
             />
 
             <Button type="submit" className="w-full">
-              {/* <Settings></Settings> */}
+              
               Update Book
             </Button>
           </form>

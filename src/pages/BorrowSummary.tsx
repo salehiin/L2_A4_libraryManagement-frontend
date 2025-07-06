@@ -1,5 +1,3 @@
-// import { useGetBorrowSummaryQuery } from "@/redux/api/baseApi";
-
 import { useGetBorrowSummaryQuery } from "@/redux/api/baseApi";
 
 export default function BorrowSummary() {

@@ -1,11 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
@@ -14,7 +8,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 import { useBorrowBookMutation } from "@/redux/api/baseApi";
 import type { IBook } from "@/types";
-import { ArrowDownToLine} from "lucide-react";
+import { ArrowDownToLine } from "lucide-react";
 
 interface IProps {
   book: IBook;
@@ -32,37 +26,36 @@ export default function BorrowBookModal({ book }: IProps) {
   const form = useForm<IBorrowForm>();
 
   const onSubmit = async (data: IBorrowForm) => {
-  const quantity = Number(data.quantity);
+    const quantity = Number(data.quantity);
 
-  if (quantity > book.copies) {
-    toast.error("Quantity cannot exceed available copies.");
-    return;
-  }
+    if (quantity > book.copies) {
+      toast.error("Quantity cannot exceed available copies.");
+      return;
+    }
 
-  const payload = {
-    book: book._id, 
-    quantity,
-    dueDate: data.dueDate,
+    const payload = {
+      book: book._id,
+      quantity,
+      dueDate: data.dueDate,
+    };
+
+    try {
+      await borrowBook(payload).unwrap();
+      toast.success("Book borrowed successfully!");
+      setOpen(false);
+      navigate("/borrow-summary");
+    } catch {
+      toast.error("Failed to borrow book.");
+    }
   };
-
-  try {
-    await borrowBook(payload).unwrap();
-    toast.success("Book borrowed successfully!");
-    setOpen(false);
-    navigate("/borrow-summary");
-  } catch {
-    toast.error("Failed to borrow book.");
-  }
-};
 
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
-            {/* <BookOpenCheck></BookOpenCheck> */}
-            <ArrowDownToLine></ArrowDownToLine>
-            
+          <ArrowDownToLine></ArrowDownToLine>
+
         </Button>
       </DialogTrigger>
       <DialogContent>

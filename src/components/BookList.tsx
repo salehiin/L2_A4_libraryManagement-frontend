@@ -7,8 +7,6 @@ import { Button } from './ui/button';
 import { Trash2 } from 'lucide-react';
 import BorrowBookModal from './module/borrow/BorrowBookModal';
 import { Link } from 'react-router-dom';
-// import { Link } from 'react-router';
-// import { Link } from "react-router-dom";
 
 interface IProps {
     book: IBook;
@@ -35,7 +33,6 @@ export default function BookList({ book, index }: IProps) {
         // <tbody>
         <tr className="grid grid-cols-8 place-items-center text-center border-b p-4">
             <td>{index + 1}</td>
-            {/* <td className='text-pink-500'>{book?.title}</td> */}
             <td>
                 <Link to={`/books/${book._id}`} className="text-blue-600 hover:underline">
                     {book.title}

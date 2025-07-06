@@ -8,15 +8,14 @@ import { useNavigate, useParams } from "react-router-dom";
 export default function BookDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
-    //   const { data: book, isLoading, isError } = useGetSingleBookQuery(id);
-    //   const book = data?.data;
+    
 
     const { data: response, isLoading, isError } = useGetSingleBookQuery(id);
     const book = response?.data;
 
     if (isLoading) return <p className="text-center">Loading...</p>;
     if (isError || !book) return <p className="text-center text-red-500">Failed to load book details.</p>;
-    //   if (!id) return <p className="text-center text-red-500">Invalid book ID.</p>;
+   
 
     console.log("Book object:", book);
 
@@ -30,7 +29,7 @@ export default function BookDetails() {
             <p><strong>Copies:</strong> {book.copies}</p>
             <p><strong>Available:</strong> {book.available ? "Yes" : "No"}</p>
             <p className="text-sm text-gray-500 mt-2">Added on: {book.createdAt ? new Date(book.createdAt).toLocaleDateString("en-US") : "N/A"}</p>
-            {/* Go Back & Borrow CTA Buttons */}
+            
             <div className="flex gap-4 mt-6">
                 <button
                     onClick={() => navigate(-1)}
