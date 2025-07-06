@@ -12,16 +12,16 @@ interface InitialState {
 
 const initialState: InitialState = {
   books: [
-    {
-      _id: 'adfghj',
-      title: 'Mindset',
-      author: 'Carol S. Dweck',
-      genre: 'non-fiction',
-      isbn: '9783492972826',
-      copies: 5,
-      available: true
+    // {
+    //   _id: 'adfghj',
+    //   title: 'Mindset',
+    //   author: 'Carol S. Dweck',
+    //   genre: 'non-fiction',
+    //   isbn: '9783492972826',
+    //   copies: 5,
+    //   available: true
 
-    },
+    // },
     
   ],
   filter: "All",

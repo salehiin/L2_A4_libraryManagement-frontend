@@ -24,7 +24,7 @@ export default function Books() {
 
       <table className="table-auto w-full border border-gray-200 rounded-md overflow-hidden">
         <thead className="bg-gray-100">
-          <tr className="grid grid-cols-9 place-items-center text-sm font-semibold text-black">
+          <tr className="grid grid-cols-8 place-items-center text-sm font-semibold text-black">
             <th>Index</th>
             <th>Title</th>
             <th>Author</th>
@@ -32,7 +32,7 @@ export default function Books() {
             <th>ISBN</th>
             <th>Copies</th>
             <th>Availability</th>
-            <th>Description</th>
+            {/* <th>Description</th> */}
             <th>Actions</th>
           </tr>
         </thead>
@@ -42,8 +42,8 @@ export default function Books() {
               <BookList key={book._id} book={book} index={index} />
             ))
           ) : (
-            <tr className="grid grid-cols-9 place-items-center text-center p-5">
-              <td colSpan={9} className="text-gray-500">
+            <tr className="grid grid-cols-8 place-items-center text-center p-5">
+              <td colSpan={8} className="text-gray-500">
                 No books found.
               </td>
             </tr>

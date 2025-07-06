@@ -4,6 +4,8 @@ import type { IBook } from '@/types';
 import toast from 'react-hot-toast';
 import UpdateBookModal from './module/books/UpdateBookModal';
 import { Button } from './ui/button';
+import { Trash2 } from 'lucide-react';
+import BorrowBookModal from './module/borrow/BorrowBookModal';
 
 interface IProps {
     book: IBook;
@@ -28,10 +30,10 @@ export default function BookList({ book, index }: IProps) {
 
     return (
         // <tbody>
-        <tr className="grid grid-cols-9 place-items-center text-center border-b">
+        <tr className="grid grid-cols-8 place-items-center text-center border-b p-4">
             <td>{index + 1}</td>
-            <td>{book?.title}</td>
-            <td>{book?.author}</td>
+            <td className='text-pink-500'>{book?.title}</td>
+            <td className='text-blue-700'>{book?.author}</td>
             <td
                 className={cn({
                     "text-green-500": book.genre === "NON_FICTION",
@@ -42,28 +44,30 @@ export default function BookList({ book, index }: IProps) {
                     "text-blue-500": book.genre === "FANTASY",
                 })}
             >{book?.genre.replace("_", " ")}</td>
-            <td>{book?.isbn}</td>
+            <td className='text-green-900'>{book?.isbn}</td>
             <td
                 className={cn({
                     "text-green-500": book.copies >= 5,
-                    "text-red-500": book.copies < 5,
+                    "text-yellow-500": book.copies > 0 && book.copies < 5,
+                    "text-red-500": book.copies === 0,
                 })}
             >{book?.copies}</td>
             <td
                 className={cn({
-                    "text-green-500": book.available === true,
-                    "text-red-500": book.available === false,
+                    "text-green-500": book.copies > 0,
+                    "text-red-500": book.copies === 0
                 })}
-            >{book?.available ? 'Yes' : 'No'}</td>
-            <td>{book?.description ? book?.description : 'Review not available'}</td>
+            >{book?.copies > 0 ? 'Yes' : 'No'}</td>
+            {/* <td>{book?.description.length > 30 ? book?.description.slice(0, 15) + "..." : 'Review not available'}</td> */}
             <td className='flex gap-2'>
+                <BorrowBookModal book={book}></BorrowBookModal>
                 <UpdateBookModal book={book} />
                 <Button
                     type="button"
                     onClick={handleDelete}
                     className="text-red-500 hover:underline"
                 >
-                    Delete
+                    <Trash2></Trash2>
                 </Button>
             </td>
         </tr>

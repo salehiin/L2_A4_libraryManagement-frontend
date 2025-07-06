@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useForm } from "react-hook-form";
 // import { Form } from "@/components/ui/form"
 import { Input } from "@/components/ui/input";
+import { Edit } from "lucide-react";
 
 
 interface IFormInput {
@@ -63,7 +64,7 @@ export default function UpdateBookModal({ book }: UpdateBookModalProps) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
-          Update
+          <Edit></Edit>
         </Button>
       </DialogTrigger>
       <DialogContent>
@@ -182,6 +183,7 @@ export default function UpdateBookModal({ book }: UpdateBookModalProps) {
             />
 
             <Button type="submit" className="w-full">
+              {/* <Settings></Settings> */}
               Update Book
             </Button>
           </form>

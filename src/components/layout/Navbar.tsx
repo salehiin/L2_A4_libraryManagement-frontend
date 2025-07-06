@@ -15,10 +15,13 @@ export default function Navbar() {
             
             <Link to="/">Home</Link>
             <Link to="/books">Books</Link>
-            <Link to="/borrow">Borrow</Link>
+            <Link to="/borrow-summary">Borrow Summary</Link>
             <div className="ml-auto">
                 <ModeToggle></ModeToggle>
             </div>
         </nav>
     )
 }
+
+// path: "borrow-summary",
+//         Component: BorrowSummary,

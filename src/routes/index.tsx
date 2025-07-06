@@ -1,10 +1,12 @@
 
 import { createBrowserRouter } from "react-router";
 import App from "@/App";
-import Home from "@/pages/Home";     
+import Home from "@/pages/Home";
 // import Books from "@/pages/Books";   
 import Books from "@/pages/Books";
-import Borrow from "@/pages/Borrow";
+import Borrow from "@/pages/BorrowSummary";
+import BorrowSummary from "@/pages/BorrowSummary";
+// import BorrowSummary from "@/pages/borrow-summary";
 
 const router = createBrowserRouter([
   {
@@ -19,10 +21,14 @@ const router = createBrowserRouter([
         path: "books",
         Component: Books,
       },
+      // {
+      //   path: "borrow",
+      //   Component: Borrow,
+      // },
       {
-        path: "borrow",
-        Component: Borrow,
-      },
+        path: "borrow-summary",
+        Component: BorrowSummary,
+      }
     ],
   },
 ]);
