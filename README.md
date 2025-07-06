@@ -2,9 +2,15 @@
 
 A simple and elegant web application that allows users to browse, borrow, and view summaries of books. Built using the **MERN stack**, this system provides core features like book listings, borrow functionality, and a borrow summary without authentication or payment integration.
 
-## 🚀 Live Site
+## 🚀 Important Links
 
-🔗 [Visit Live App](https://l2-a3-library-management-k53m.vercel.app)
+- Frontend Github Link - https://github.com/salehiin/L2_A4_libraryManagement-frontend
+- Frontend Live Link: https://minimal-library-management-system-jade.vercel.app/
+
+- Backend GitHub Link: https://github.com/salehiin/L2_A3_libraryManagement
+- Backend Live Link: https://l2-a3-library-management-k53m.vercel.app/
+
+<!-- 🔗 [Visit Live App](https://l2-a3-library-management-k53m.vercel.app) -->
 
 ---
 
@@ -88,10 +94,3 @@ GET /api/borrow – Get borrow summary (aggregated)
 
 
 ## Thanks
-
-
-
-
-
-
-
