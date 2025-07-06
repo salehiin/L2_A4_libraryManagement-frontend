@@ -55,7 +55,11 @@ export const baseApi = createApi({
     }),
 
     // 
+    getSingleBook: builder.query<IBook, string>({
+      query: (id) => `/books/${id}`,
+    }),
+    // 
   }),
 });
 
-export const { useGetBooksQuery, useCreateBookMutation, useUpdateBookMutation, useDeleteBookMutation, useBorrowBookMutation, useGetBorrowSummaryQuery } = baseApi;
+export const { useGetBooksQuery, useCreateBookMutation, useUpdateBookMutation, useDeleteBookMutation, useBorrowBookMutation, useGetBorrowSummaryQuery, useGetSingleBookQuery } = baseApi;

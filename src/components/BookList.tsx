@@ -6,6 +6,9 @@ import UpdateBookModal from './module/books/UpdateBookModal';
 import { Button } from './ui/button';
 import { Trash2 } from 'lucide-react';
 import BorrowBookModal from './module/borrow/BorrowBookModal';
+import { Link } from 'react-router-dom';
+// import { Link } from 'react-router';
+// import { Link } from "react-router-dom";
 
 interface IProps {
     book: IBook;
@@ -32,7 +35,12 @@ export default function BookList({ book, index }: IProps) {
         // <tbody>
         <tr className="grid grid-cols-8 place-items-center text-center border-b p-4">
             <td>{index + 1}</td>
-            <td className='text-pink-500'>{book?.title}</td>
+            {/* <td className='text-pink-500'>{book?.title}</td> */}
+            <td>
+                <Link to={`/books/${book._id}`} className="text-blue-600 hover:underline">
+                    {book.title}
+                </Link>
+            </td>
             <td className='text-blue-700'>{book?.author}</td>
             <td
                 className={cn({
@@ -58,6 +66,7 @@ export default function BookList({ book, index }: IProps) {
                     "text-red-500": book.copies === 0
                 })}
             >{book?.copies > 0 ? 'Yes' : 'No'}</td>
+
             {/* <td>{book?.description.length > 30 ? book?.description.slice(0, 15) + "..." : 'Review not available'}</td> */}
             <td className='flex gap-2'>
                 <BorrowBookModal book={book}></BorrowBookModal>

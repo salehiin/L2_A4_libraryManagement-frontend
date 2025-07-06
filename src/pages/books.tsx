@@ -21,8 +21,8 @@ export default function Books() {
         <h2 className="text-xl font-semibold">Book List</h2>
         <AddBookModal />
       </div>
-
-      <table className="table-auto w-full border border-gray-200 rounded-md overflow-hidden">
+      <div className="overflow-x-auto w-full">
+      <table className="table-auto w-full border border-gray-200 rounded-md overflow-hidden min-w-[950px]">
         <thead className="bg-gray-100">
           <tr className="grid grid-cols-8 place-items-center text-sm font-semibold text-black">
             <th>Index</th>
@@ -51,5 +51,6 @@ export default function Books() {
         </tbody>
       </table>
     </div>
+    </div >
   );
 }

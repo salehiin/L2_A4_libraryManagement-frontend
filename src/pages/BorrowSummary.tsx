@@ -22,9 +22,9 @@ export default function BorrowSummary() {
                 <tbody>
                     {data?.data?.map((entry: any, index: number) => (
                         <tr key={index} className="grid grid-cols-3 place-items-center border-b py-2">
-                            <td>{entry.book.title}</td>
-                            <td>{entry.book.isbn}</td>
-                            <td>{entry.totalQuantity}</td>
+                            <td className="text-pink-500">{entry.book.title}</td>
+                            <td className="text-pink-500">{entry.book.isbn}</td>
+                            <td className="text-pink-500">{entry.totalQuantity}</td>
                         </tr>
                     ))}
                 </tbody>

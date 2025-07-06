@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
 import { useBorrowBookMutation } from "@/redux/api/baseApi";
 import type { IBook } from "@/types";
-import { ArrowDownToLine, BookOpenCheck } from "lucide-react";
+import { ArrowDownToLine} from "lucide-react";
 
 interface IProps {
   book: IBook;
