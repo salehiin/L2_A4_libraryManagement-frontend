@@ -1,84 +1,94 @@
+# 📚 Minimal Library Management System
 
-# conceptual - 1
-# v1 - 17:50 - project installetion 
-# 23.03 - redux setup
-# 
+A simple and elegant web application that allows users to browse, borrow, and view summaries of books. Built using the **MERN stack**, this system provides core features like book listings, borrow functionality, and a borrow summary without authentication or payment integration.
 
-# module
-# 21.7 - store set up
-# 21.10 - hooks
-# 21.11 - documentation explained
+## 🚀 Live Site
 
-# 22.1 - functional programming - skip
-# 22.2 - mutation - skip
-# 22.3 - function currying -skip
-# 22.4 - middleware - skip
-# 22.5 - shadcn - skip
-# 22.6 - react router dom - project start
-# 22.7 - dark theme - skip
-# 22.8 - project start
-# 22.9 - filter
-# 22.10 - 
-# 22.11-
-# 22.12 - 
+🔗 [Visit Live App](https://l2-a3-library-management-k53m.vercel.app)
 
-# 23.1 - date picker - calender
-# 23.2 - 
-# 23.3 - if have time can explore again
-# 23.4 - 
-# 23.5 - filter
-# 23.6 - 
-# 23.7 -
-# 23.8 - any modification - should start from here
-# 23.9 -
-# 23.10 - 05:00 - problem starts
+---
 
-# special session A4 - https://github.com/mehedi-imun/basic-redux
+## ✨ Features
 
-# github - https://github.com/Apollo-Level2-Web-Dev/B5A4
-# vercel - https://docs.google.com/document/d/13WSmmTHvOLYWPVXJlmFGalnCXcF60D6omjk-a1xTW-c/edit?tab=t.0
+- 📖 Browse books with details like title, author, genre, ISBN, and availability
+- 🔍 View single book details on a dedicated page
+- 📝 Borrow books with quantity and due date validation
+- 📊 Borrow Summary page shows total quantity borrowed (aggregation API)
+- ✅ Availability auto-updates based on remaining copies
+- 🎨 Responsive and mobile-first design
+- ⚛️ React Hook Form, RTK Query, ShadCN UI, and TypeScript used for form handling, API, and UI
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**:
+- Vite + React
+- Redux Toolkit + RTK Query
+- TypeScript
+- React Router DOM
+- ShadCN UI + TailwindCSS
+- Toast Notifications
+
+**Backend**:
+- Node.js + Express
+- MongoDB + Mongoose
+- RESTful API (Hosted on Vercel)
+
+---
+
+## 📂 Project Structure (Client)
+
+src/
+│
+├── components/
+│ ├── BookList.tsx
+│ ├── ui/ # ShadCN-based form and UI elements
+│ └── module/
+│ ├── books/
+│ └── borrow/
+│
+├── pages/
+│ ├── Home.tsx
+│ ├── Books.tsx
+│ ├── BookDetails.tsx
+│ └── BorrowSummary.tsx
+│
+├── redux/
+│ ├── api/baseApi.ts
+│ └── store.ts
+│
+└── types/
+└── index.ts
 
 
 
-🛠 4. bookManage slice does not exist on state
-You're referencing state.bookManage in selectors, but your store doesn't include that slice name. Ensure:
+## 🔐 Borrow Feature Business Logic
+Quantity cannot exceed available copies
 
-Your slice is named bookManage,
+If book copies reach 0, it is marked as unavailable
 
-It's added to the store:
+Borrow data is stored with bookId, quantity, and dueDate
 
-ts
-Copy
-Edit
-reducer: {
-  bookManage: bookManageReducer,
-  baseApi: baseApi.reducer,
-}
-Or rename your selector to match the actual state key.
+Borrow summary aggregates borrowed quantity per book (title + ISBN)
 
 
-- redux/api/baseApi.ts
-- redux/store.ts
-- redux/hooks.ts - remain my template
-- pages/Books.tsx
-- components/BookList.tsx
-- components/module/books/AddBookModal.tsx
-- src/redux/api/baseApi.ts
-- src/redux/store.ts
-- components/module/books/AddBookModal.tsx
-- pages/books.tsx
-- components/module/books/BookList.tsx
-- components/module/books/AddBookModal.tsx
-- src/redux/api/baseApi.ts
-- src/redux/store.ts
-- routes/index.tsx
-- components/module/books/AddBookModal.tsx
-- src/pages/books.tsx
-- components/module/books/AddBookModal.tsx
-- types/index.ts 
-- components/module/books/AddBookModal.tsx
+## 📈 API Endpoints (Backend)
+GET /api/books – Get all books
 
-https://l2-a3-library-management-k53m.vercel.app/api/borrow
+POST /api/books – Add a book
+
+PATCH /api/books/:id – Update book
+
+DELETE /api/books/:id – Delete book
+
+POST /api/borrow – Borrow a book
+
+GET /api/borrow – Get borrow summary (aggregated)
+
+
+## Thanks
+
 
 
 
