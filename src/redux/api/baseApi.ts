@@ -4,7 +4,8 @@ import type { IBook } from "@/types";
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://l2-a3-library-management-k53m.vercel.app/api",
+    // baseUrl: "https://l2-a3-library-management-k53m.vercel.app/api",
+    baseUrl: import.meta.env.VITE_API_URL,
   }),
   tagTypes: ["Book", "Borrow"],
   endpoints: (builder) => ({

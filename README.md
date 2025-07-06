@@ -5,10 +5,10 @@ A simple and elegant web application that allows users to browse, borrow, and vi
 ## 🚀 Important Links
 
 - Frontend Github Link - https://github.com/salehiin/L2_A4_libraryManagement-frontend
-- Frontend Live Link: https://minimal-library-management-system-jade.vercel.app/
+- Frontend Live Link: https://minimal-library-management-system-jade.vercel.app
 
 - Backend GitHub Link: https://github.com/salehiin/L2_A3_libraryManagement
-- Backend Live Link: https://l2-a3-library-management-k53m.vercel.app/
+- Backend Live Link: https://l2-a3-library-management-k53m.vercel.app
 
 <!-- 🔗 [Visit Live App](https://l2-a3-library-management-k53m.vercel.app) -->
 
