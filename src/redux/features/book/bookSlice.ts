@@ -14,11 +14,11 @@ const initialState: InitialState = {
   filter: "All",
 }
 
-type DraftBook = Pick<IBook, "title" | "author" | "genre" | "isbn" | "copies" | "available">; 
+type DraftBook = Pick<IBook, "title" | "author" | "genre" | "isbn" | "copies" | "available"> & { description?: string; }
 
 
 const createBook = (bookData: DraftBook): IBook => {
-  return { _id: nanoid(), ...bookData};
+  return { _id: nanoid(), ...bookData, description: bookData.description || "No description", };
 };
 
 export const bookSlice = createSlice({
@@ -29,20 +29,18 @@ export const bookSlice = createSlice({
       const bookData = createBook(action.payload);
       state.books.push(bookData);
     },
-   
+
     deleteBook: (state, action: PayloadAction<string>) => {
-      state.books = state.books.filter((book) => book._id !== action.payload );
+      state.books = state.books.filter((book) => book._id !== action.payload);
     },
 
-    updateFilter: (state, action: PayloadAction<"All" | "Fiction" | "Non-Fiction">) => {
-      state.filter = action.payload;
-    }
+
   },
 
 })
 
 
 
-export const { addBook, deleteBook, updateFilter } = bookSlice.actions;
+export const { addBook, deleteBook } = bookSlice.actions;
 
 export default bookSlice.reducer;

@@ -6,18 +6,18 @@ import { useNavigate, useParams } from "react-router-dom";
 
 
 export default function BookDetails() {
-    const { id } = useParams();
+    const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
     
-
-    const { data: response, isLoading, isError } = useGetSingleBookQuery(id);
-    const book = response?.data;
-
+    const { data: book, isLoading, isError } = useGetSingleBookQuery(id || "");
+    
+    
+    if (!id) return <p>Invalid book ID.</p>;
     if (isLoading) return <p className="text-center">Loading...</p>;
     if (isError || !book) return <p className="text-center text-red-500">Failed to load book details.</p>;
    
 
-    console.log("Book object:", book);
+    // console.log("Book object:", book);
 
     return (
         <div className="max-w-xl flex flex-col gap-4 mx-auto p-4 shadow-md border rounded-md text-pink-500">
